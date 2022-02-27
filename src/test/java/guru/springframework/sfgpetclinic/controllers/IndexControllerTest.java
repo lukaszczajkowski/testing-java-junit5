@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.*;
 
 import java.time.Duration;
 
@@ -66,5 +67,35 @@ class IndexControllerTest {
     @Test
     void testAssumptionTrueAssumptionIsTrue() {
         assumeTrue("GURU".equalsIgnoreCase("GURU"));
+    }
+
+    @Test
+    @EnabledOnOs(OS.MAC)
+    void testMeOnMacOs() {
+    }
+
+    @Test
+    @EnabledOnOs({OS.WINDOWS})
+    void testMeOnWinnows() {
+    }
+
+    @Test
+    @EnabledOnJre(JRE.OTHER)
+    void testMeOnJava15() {
+    }
+
+    @Test
+    @EnabledOnJre(JRE.JAVA_8)
+    void testMeOnJava8() {
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "USER", matches = "Lukasz Czajkowski")
+    void testIfUserLukaszCzajkowski() {
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "USER", matches = "fred")
+    void testIfUserFred() {
     }
 }
