@@ -1,6 +1,6 @@
 package guru.springframework.sfgpetclinic.model;
 
-import org.junit.jupiter.api.Tag;
+import guru.springframework.sfgpetclinic.ModelTests;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -8,8 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Tag("model")
-class OwnerTest {
+class OwnerTest implements ModelTests {
 
     @Test
     void dependentAssertions() {
@@ -19,10 +18,10 @@ class OwnerTest {
 
         assertAll("Properties test",
                 () -> assertAll("Person Properties",
-                            () -> assertEquals("Joe", owner.getFirstName()),
-                            () -> assertEquals("Buck", owner.getLastName())),
+                        () -> assertEquals("Joe", owner.getFirstName()),
+                        () -> assertEquals("Buck", owner.getLastName())),
                 () -> assertAll("Owner Properties",
-                        () -> assertEquals("Key West",owner.getCity()),
+                        () -> assertEquals("Key West", owner.getCity()),
                         () -> assertEquals("1231231234", owner.getTelephone())
                 ));
 
