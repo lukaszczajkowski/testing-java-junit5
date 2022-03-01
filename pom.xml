@@ -114,6 +114,15 @@
                         --illegal-access=permit
                     </argLine>
                 </configuration>
+                <!-- this is needed for the plugin to run integration tests in verify goal -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
